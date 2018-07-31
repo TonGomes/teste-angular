@@ -1,0 +1,42 @@
+* Campos devem ser um Select com as opções para escolha:
+  Sexo        OK
+  Estado      OK
+  Cidade      NAO
+  Profissão   NAO
+
+* De acordo com a escolha no campo Estado,
+  alterne entre listas diferentes de cidade. (min 2 estados)
+->> NAO FEITO
+
+* Campos Nome, Sobrenome, Email, Área de Formação, Data e Profissão
+  são obrigatórios
+  ->> OK
+
+* Garantir que o campo E-mail receba apenas emails válidos.
+->> OK
+
+* Ao editar, salvar ou excluir um registro,
+atualizar a lista de registros para que na tela de busca,
+os dados estejam atualizados conforme a ação tomada na tela anterior.
+->> NAO FEITO
+
+* Ao selecionar BUSCAR, o usuário terá acesso a uma tela de busca,
+onde poderá realizar suas buscas por PROFISSÃO ou NOME COMPLETO.
+--> NAO FEITO
+
+* Após realizar a busca, deverá ser possível selecionar um registro na lista,
+e devolve-lo para o formulario caso o usuário precise editar algum dos dados.
+->> NAO FEITO
+
+* Utilize modal para a tela de BUSCA.
+->>NAO FEITO
+
+OBS:
+Não tinha pratica com angular 6, acabei perdendo muito tempo com
+alguns detalhes que nao fazia o programa rodar, e detalhes da
+linguaguem.
+Deixei anotado a lista de requisitos que não consegui terminar.
+Tenho pratica em fazer esse fluxo, mas nao consegui terminar a tempo.
+Vou continuar trabalhando neste projeto. Tenho muita disposicao para
+aprender novas linguagens e fiquei muito impressionado com o
+angular 6 e typescript. Vou continuar estudando...

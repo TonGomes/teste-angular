@@ -1,0 +1,123 @@
+<form [formGroup]="formCadastro">
+  <div class="panel-heading form-group">
+    <h3 class="panel-title">Preencha os dados abaixo</h3>
+  </div>
+
+  <div class="col-lg-6 col-md-3 col-sm-12 col-xs-12 form-group">
+    <label>Nome</label>
+    <input class="form-control"
+           formControlName="cNome"
+           type="text"
+           placeholder="Nome *"
+           maxlength="120">
+  </div>
+
+  <div class="col-lg-6 col-md-9 col-sm-12 col-xs-12 form-group">
+    <label>Sobrenome</label>
+    <input class="form-control"
+           formControlName="cSobrenome"
+           type="text"
+           placeholder="Sobrenome *"
+           maxlength="120">
+  </div>
+
+  <div class="col-lg-6 col-md-10 col-sm-12 col-xs-12 form-group">
+    <label>Email</label>
+    <input class="form-control"
+           formControlName="cEmail"
+           pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+           type="text"
+           placeholder="nome@email.com *"
+           maxlength="120">
+    <span *ngIf="formCadastro.controls.cEmail.value && formCadastro.controls.cEmail.errors?.pattern && formCadastro.controls.cEmail.touched">
+      Email inválido
+    </span>
+  </div>
+
+  <div class="col-lg-6 col-md-2 col-sm-12 col-xs-12 form-group">
+    <label>Sexo</label>
+    <select  class="form-control" formControlName="cSexo" type="checkbox">
+      <option value="M">Masculino</option>
+      <option value="F">Feminino</option>
+    </select>
+  </div>
+
+  <div class="col-lg-6 col-md-3 col-sm-12 col-xs-12 form-group">
+    <label>Data cadastro</label>
+    <input class="form-control"
+          formControlName="dttCadastro"
+          bsDatepicker [bsConfig]="datePickerConfig"
+          type="text"
+          placeholder="DD/MM/YYYY *">
+  </div>
+  <!-- TODO: Alterar o datepicker para mostrar os dados em pt-Br, tentei fazer
+    essa alteração mas nao consegui fazer ela funcionar. -->
+
+  <div formGroupName="endereco">
+    <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 form-group">
+      <label>Estado</label>
+      <select class="form-control"
+              formControlName="cEstado"
+              type="checkbox">
+        <option *ngFor="let estado of listaEstados" [value]="estado.cSigla">
+          {{ estado.cNome }}
+        </option>
+      </select>
+    </div>
+
+    <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12 form-group">
+      <label>Cidade</label>
+      <input class="form-control"
+            formControlName="cCidade"
+            type="text"
+            placeholder="Cidade"
+            maxlength="120">
+    </div>
+  </div>
+  <!-- TODO: Implementar a funcao de carregar lista de cidades conforme
+    o Estado informado. -->
+
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group">
+    <label>Área de formação</label>
+    <input class="form-control"
+           formControlName="cAreaFormacao"
+           type="text"
+           placeholder="Área Formação *"
+           maxlength="120">
+  </div>
+
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group">
+    <label>Profissão</label>
+    <select class="form-control"
+           formControlName="cProfissao"
+           type="checkbox">
+      <option *ngFor="let profissao of listaProfissao" [value]="profissao.cDescricao">
+        {{ profissao.cDescricao }}
+      </option>
+    </select>
+  </div>
+
+  <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group"
+      *ngIf="formCadastro.invalid">*Campos obrigatórios!</span>
+
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="btn col-md-1">
+      <button class="btn btn-info" (click)="limparForm()">Novo</button>
+    </div>
+    <div class="btn col-md-1">
+      <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Alterar</button>
+    </div>
+    <div class="btn col-md-1">
+      <button class="btn btn-danger">Excluir</button>
+    </div>
+    <div class="btn col-md-1">
+      <button type="button" class="btn btn-primary" (click)="openModal(content)">Buscar</button>
+      <!-- TODO: fazer com que o botao buscar abra um modal onde vai ter
+        uma lista do cadastro de profissoes. Quando a lista for carregada
+        habilitar o botao de excluir. -->
+    </div>
+    <div class="btn col-md-1">
+      <button class="btn btn-primary" (click)="saveDataForm()" [disabled]="!formCadastro.valid">Salvar</button>
+    </div>
+  </div>
+</form>
